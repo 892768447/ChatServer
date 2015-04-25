@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
 encoding//lib/encrypt.py=utf-8
+encoding/application.py=utf-8
+encoding/server.py=utf-8
+encoding/urls.py=utf-8
