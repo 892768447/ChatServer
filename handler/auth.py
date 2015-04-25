@@ -5,7 +5,7 @@
 Created on 2015-4-25
 @author: ヽoo悾絔℅o。
 @email: 892768447@qq.com
-@description: 
+@description: 登录退出
 '''
 from tornado import gen
 from tornado.web import RequestHandler, HTTPError
