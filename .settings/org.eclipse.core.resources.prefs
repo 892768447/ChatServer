@@ -1,6 +1,8 @@
 eclipse.preferences.version=1
 encoding//handler/auth.py=utf-8
 encoding//handler/base.py=utf-8
+encoding//handler/friends.py=utf-8
+encoding//handler/index.py=utf-8
 encoding//lib/encrypt.py=utf-8
 encoding/application.py=utf-8
 encoding/server.py=utf-8
