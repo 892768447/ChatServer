@@ -22,3 +22,8 @@ class BaseHandler(RequestHandler):
         if not user_json:
             return None
         return json_decode(user_json)
+
+    def finish(self, chunk = None):
+        self.set_header("Content-Type", "application/json; charset=UTF-8")
+        self.set_header("Server", "Chat Server")
+        super(BaseHandler, self).finish(chunk)
