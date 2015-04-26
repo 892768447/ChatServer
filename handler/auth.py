@@ -8,7 +8,7 @@ Created on 2015-4-25
 @description: 登录退出
 '''
 from tornado import gen
-from tornado.web import RequestHandler, HTTPError
+from tornado.web import HTTPError
 from handler.base import BaseHandler
 from tornado.escape import json_encode
 
@@ -29,8 +29,16 @@ class AuthLoginHandler(BaseHandler):
         self.set_secure_cookie("user", json_encode(data), 1)
         self.finish("登陆成功")
 
-class AuthLogoutHandler(RequestHandler):
+class AuthLogoutHandler(BaseHandler):
 
     def get(self, *args, **kwargs):
         self.clear_cookie("user")
         self.write("注销")
+
+class AuthRegisterHandler(BaseHandler):
+
+    def get(self, *args, **kwargs):
+        self.render("reg.html")
+
+    def post(self, *args, **kwargs):
+        self.finish(dict(a = "chunk"), 1)

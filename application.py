@@ -20,9 +20,10 @@ class ChatApplication(Application):
     def __init__(self):
         settings = { \
             "cookie_secret" : "aaaa", \
-            "xsrf_cookies" : "aaaaa", \
+            "xsrf_cookies" : True, \
             "template_path" : "template", \
             "static_path" : "static", \
+            "login_url" : "/login", \
             "debug" : False \
         }
         super(ChatApplication, self).__init__(urls, **settings)

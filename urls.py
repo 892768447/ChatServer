@@ -7,7 +7,8 @@ Created on 2015-4-25
 @email: 892768447@qq.com
 @description: url路由
 '''
-from handler.auth import AuthLoginHandler, AuthLogoutHandler
+from handler.auth import AuthLoginHandler, AuthLogoutHandler, \
+    AuthRegisterHandler
 from handler.friends import GetFriendsHandler
 from handler.index import IndexHandler
 from handler.xsrf import XsrfHandler
@@ -21,6 +22,7 @@ urls = [ \
     (r"/xsrf", XsrfHandler), \
     (r"/login", AuthLoginHandler), \
     (r"/logout", AuthLogoutHandler), \
+    (r"/reg", AuthRegisterHandler), \
     (r"/friends", GetFriendsHandler), \
     (r"/(.*?)", IndexHandler), \
 ]

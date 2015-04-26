@@ -16,6 +16,13 @@ __Version__ = "Version 1.0"
 
 class BaseHandler(RequestHandler):
 
+    @property
+    def db(self):
+        '''#数据库连接'''
+        if not hasattr(self, "_db"):
+            self._db = None
+        return self._db
+
     def get_current_user(self):
         '''#获取当前用户'''
         user_json = self.get_secure_cookie("user")
@@ -23,7 +30,8 @@ class BaseHandler(RequestHandler):
             return None
         return json_decode(user_json)
 
-    def finish(self, chunk = None):
-        self.set_header("Content-Type", "application/json; charset=UTF-8")
+    def finish(self, chunk = None, json = 0):
         self.set_header("Server", "Chat Server")
+        if json:
+            self.set_header("Content-Type", "application/json; charset=UTF-8")
         super(BaseHandler, self).finish(chunk)
