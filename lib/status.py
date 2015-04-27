@@ -12,17 +12,20 @@ __Author__ = "By: ヽoo悾絔℅o。\nQQ: 892768447\nEmail: 892768447@qq.com\nWe
 __Copyright__ = "Copyright (c) 2015 ヽoo悾絔℅o。"
 __Version__ = "Version 1.0"
 
-
-Code_RegNoUserName = 0    # 没有填写用户名
-Code_RegNoPassword = 1    # 没有填写密码
-Code_UserExist = 2    # 账号已存在
-Code_RegSuccess = 3    # 注册成功
-Code_RegFailed = 4    # 注册失败
-Code_LoginSuccess = 5    # 登录成功
-Code_LoginFailed = 6    # 登录失败
+Code_Error = -1    # 未知错误
+Code_Ok = 0    # 无异常
+Code_RegNoUserName = 1    # 没有填写用户名
+Code_RegNoPassword = 2    # 没有填写密码
+Code_UserExist = 3    # 账号已存在
+Code_RegSuccess = 4    # 注册成功
+Code_RegFailed = 5    # 注册失败
+Code_LoginSuccess = 6    # 登录成功
+Code_LoginFailed = 7    # 登录失败
 
 MSG = { \
-    Code_UserExist : "该账号已经被注册", \
+    Code_Error : "未知错误", \
+    Code_Ok : "", \
+    Code_UserExist : "该账号已经存在", \
     Code_RegNoUserName : "没有填写用户名", \
     Code_RegNoPassword : "没有填写密码", \
     Code_RegSuccess : "注册成功", \
