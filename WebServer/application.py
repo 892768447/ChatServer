@@ -27,3 +27,4 @@ class ChatApplication(Application):
             "debug" : False \
         }
         super(ChatApplication, self).__init__(urls, **settings)
+        self.tokens = set()

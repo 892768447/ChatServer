@@ -12,6 +12,7 @@ from handler.auth import AuthLoginHandler, AuthLogoutHandler, \
 from handler.friends import GetFriendsHandler
 from handler.index import IndexHandler
 from handler.xsrf import XsrfHandler
+from handler.socket import SocketHandler
 
 
 __Author__ = "By: ヽoo悾絔℅o。\nQQ: 892768447\nEmail: 892768447@qq.com\nWeb: http://wsq.qq.com/reflow/264315676"
@@ -24,5 +25,6 @@ urls = [ \
     (r"/logout", AuthLogoutHandler), \
     (r"/reg", AuthRegisterHandler), \
     (r"/friends", GetFriendsHandler), \
+    (r"/socket", SocketHandler), \
     (r"/(.*?)", IndexHandler), \
 ]

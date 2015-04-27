@@ -18,7 +18,7 @@ __Version__ = "Version 1.0"
 class IndexHandler(BaseHandler):
 
     def get(self, *args, **kwargs):
-        self.finish(self.get_current_user())
+        self.finish("")
 
     def post(self, *args, **kwargs):
-        self.finish(self.get_current_user())
+        self.finish("")
