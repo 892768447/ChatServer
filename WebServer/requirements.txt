@@ -1,4 +1,0 @@
-Tornado
-Motor
-PyMongo
-Greenlet

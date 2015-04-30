@@ -21,6 +21,9 @@ Code_RegSuccess = 4    # 注册成功
 Code_RegFailed = 5    # 注册失败
 Code_LoginSuccess = 6    # 登录成功
 Code_LoginFailed = 7    # 登录失败
+Code_TokenError = 8    # token过期,不正确,不存在
+Code_DeleteOk = 9    # 删除成功
+Code_DeleteError = 10    # 删除失败
 
 MSG = { \
     Code_Error : "未知错误", \
@@ -32,6 +35,9 @@ MSG = { \
     Code_RegFailed : "未知错误注册失败", \
     Code_LoginSuccess : "登录成功", \
     Code_LoginFailed : "用户不存在或者用户名密码错误", \
+    Code_TokenError : "token有误", \
+    Code_DeleteOk : "删除成功", \
+    Code_DeleteError : "删除失败", \
 }
 
 if __name__ == "__main__":

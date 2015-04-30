@@ -52,3 +52,9 @@ def sha512(data):
         return hashlib.sha512(data).hexdigest()
     except:
         return hashlib.sha512(data.encode()).hexdigest()
+
+def md5(data):
+    try:
+        return hashlib.md5(data).hexdigest()
+    except:
+        return hashlib.md5(data.encode()).hexdigest()
