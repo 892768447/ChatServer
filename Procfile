@@ -1,1 +1,1 @@
-web: python main.py --port=$VCAP_APP_PORT
+web: python src/server.py --port=$VCAP_APP_PORT
