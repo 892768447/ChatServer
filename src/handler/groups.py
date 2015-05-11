@@ -12,10 +12,11 @@ from tornado import web, gen
 from tornado.log import app_log
 
 from src.handler.base import BaseHandler, authenticated
-from src.lib.model.groups import Groups, GroupsWithCount
+from src.lib.model.groups import Groups, Ngroups
 from src.lib.status import Code_Ok, Code_GroupsAddNoName, \
     Code_GroupsAddExist, Code_GroupsAddSuccess, Code_GroupsAddFailed, \
-    Code_GroupsDelSuccess, Code_GroupsDelFailed
+    Code_GroupsDelSuccess, Code_GroupsDelFailed, Code_GroupsModifySucess, \
+    Code_GroupsModifyFailed
 
 
 __Author__ = "By: ヽoo悾絔℅o。\nQQ: 892768447\nEmail: 892768447@qq.com\nWeb: http://wsq.qq.com/reflow/264315676"
@@ -44,7 +45,7 @@ class GetGroupsHandler(BaseHandler):
             app_log.error(err, exc_info = 1)
             return self.error
         try:
-            groups = GroupsWithCount.where(Groups.uid == uid).select()
+            groups = Ngroups.where(Ngroups.uid == uid).select()
             return self._result(Code_Ok).data([group.data for group in groups])
         except Exception as err:
             app_log.error(err, exc_info = 1)
@@ -74,7 +75,7 @@ class AddGroupsHandler(BaseHandler):
             return self.error
         if not name:
             return self._result(Code_GroupsAddNoName)    # 没有填写分组名
-        if Groups(uid = uid, name = name):
+        if Groups(uid = uid, name = name) in Groups:
             return self._result(Code_GroupsAddExist)    # 该分组已经存在
         try:
             if Groups.create(uid = uid, name = name):
@@ -101,7 +102,7 @@ class DelGroupsHandler(BaseHandler):
 
     @gen.coroutine
     def task(self, uid, gid):
-        row = Groups.at(gid).where(Groups.uid == uid).delete().execute()
+        row = Groups.where(Groups.id == gid, Groups.uid == uid).delete().execute()
         if row:
             # 删除成功
             return self._result(Code_GroupsDelSuccess)
@@ -120,14 +121,17 @@ class ModifyGroupsHandler(BaseHandler):
     def post(self, *args, **kwargs):
         uid = self.get_argument("uid", 0)
         gid = self.get_argument("gid", 0)
-        result = yield gen.Task(self.task, uid, gid)
+        name = self.get_argument("name")
+        result = yield gen.Task(self.task, uid, gid, name)
         self.finish(result, 1)
 
     @gen.coroutine
-    def task(self, uid, gid):
-        row = Groups.at(gid).where(Groups.uid == uid).delete().execute()
+    def task(self, uid, gid, name):
+        if not name:
+            return self._result(Code_GroupsAddNoName)
+        row = Groups.where(Groups.id == gid, Groups.uid == uid).update(name = name).execute()
         if row:
-            # 删除成功
-            return self._result(Code_GroupsDelSuccess)
-        # 删除失败
-        return self._result(Code_GroupsDelFailed)
+            # 修改成功
+            return self._result(Code_GroupsModifySucess)
+        # 修改失败
+        return self._result(Code_GroupsModifyFailed)

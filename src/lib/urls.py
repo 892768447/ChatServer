@@ -13,7 +13,8 @@ from src.handler.delete import DeleteHandler
 from src.handler.details import GetDetailsHandler
 from src.handler.error import ErrorHandler
 from src.handler.friends import GetFriendsHandler
-from src.handler.groups import GetGroupsHandler
+from src.handler.groups import GetGroupsHandler, AddGroupsHandler, \
+    DelGroupsHandler, ModifyGroupsHandler
 from src.handler.index import IndexHandler
 from src.handler.socket import SocketHandler
 from src.handler.test import TestHandler
@@ -30,6 +31,9 @@ urls = [ \
     (r"/logout", AuthLogoutHandler), \
     (r"/reg", AuthRegisterHandler), \
     (r"/friends", GetFriendsHandler), \
+    (r"/groups/add", AddGroupsHandler), \
+    (r"/groups/del", DelGroupsHandler), \
+    (r"/groups/modify", ModifyGroupsHandler), \
     (r"/groups", GetGroupsHandler), \
     (r"/details", GetDetailsHandler), \
     (r"/delete", DeleteHandler), \

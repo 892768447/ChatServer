@@ -32,6 +32,8 @@ Code_GroupsAddSuccess = 15    # 添加分组成功
 Code_GroupsAddFailed = 16    # 添加分组失败
 Code_GroupsDelSuccess = 17    # 删除分组成功
 Code_GroupsDelFailed = 18    # 删除分组失败
+Code_GroupsModifySucess = 19    # 修改分组成功
+Code_GroupsModifyFailed = 20    # 修改分组失败
 
 MSG = { \
     Code_Error : "未知错误", \
@@ -52,6 +54,10 @@ MSG = { \
     Code_GroupsAddExist : "该分组已存在", \
     Code_GroupsAddSuccess : "添加分组成功", \
     Code_GroupsAddFailed : "添加分组失败", \
+    Code_GroupsDelSuccess : "添加分组成功", \
+    Code_GroupsDelFailed : "添加分组失败", \
+    Code_GroupsModifySucess : "修改分组成功", \
+    Code_GroupsModifyFailed : "修改分组失败", \
 }
 
 if __name__ == "__main__":
